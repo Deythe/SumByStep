@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3496649478507312210}
   - component: {fileID: 6727904229381034195}
   - component: {fileID: 3411875171595424505}
-  - component: {fileID: 5865829851120765030}
+  - component: {fileID: 729640079761844655}
+  - component: {fileID: -5694470517656390774}
   m_Layer: 0
   m_Name: Tiles1
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f29e3c1c576f6641b9e474f6b194480, type: 2}
+  - {fileID: 2100000, guid: 45b8f33d7ddd75db4a698c4605ac4c0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,7 +110,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5865829851120765030
+--- !u!114 &729640079761844655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,3 +122,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0749245ef51ab9e409ab96b5942f9b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _listTileEffects:
+  - {fileID: -5694470517656390774}
+--- !u!114 &-5694470517656390774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3754017922032511295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37db68a2e2765a64aa607bc5a2e9e0bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 6727904229381034195}
+  _lifePointModifier: 0

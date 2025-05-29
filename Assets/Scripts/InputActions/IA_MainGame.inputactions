@@ -13,61 +13,134 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "CancelAction",
+                    "type": "Button",
+                    "id": "ac68ade5-d1bd-4759-a075-ad43591bedbb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CameraMovement",
+                    "type": "PassThrough",
+                    "id": "f8a99259-72c2-4e6f-a664-d0e489a5f5ba",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "Arrows",
-                    "id": "f311b7c6-3b38-4898-af32-a13bca46ba3a",
-                    "path": "2DVector",
+                    "name": "Mobile",
+                    "id": "a193e6f6-a902-4521-a690-21cea3d2cbad",
+                    "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "CameraMovement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "d5971a35-6679-4b96-8d3e-b289cb80bac9",
-                    "path": "<Keyboard>/upArrow",
+                    "id": "2ae52dd1-ab74-4ee5-93ac-2bdcce237713",
+                    "path": "<Touchscreen>/delta/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";keyboard",
-                    "action": "Movement",
+                    "groups": ";mobile",
+                    "action": "CameraMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "a44e9eec-91f3-410b-98ca-0224f841f4ce",
-                    "path": "<Keyboard>/downArrow",
+                    "id": "21f44b47-e9ea-46e0-bf4b-1e64605a1c50",
+                    "path": "<Touchscreen>/delta/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";keyboard",
-                    "action": "Movement",
+                    "groups": ";mobile",
+                    "action": "CameraMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "871f1e1e-64cf-4061-881e-a80c797887b6",
-                    "path": "<Keyboard>/leftArrow",
+                    "id": "244624be-d8a3-478b-8578-66812f01a825",
+                    "path": "<Touchscreen>/delta/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";keyboard",
-                    "action": "Movement",
+                    "groups": ";mobile",
+                    "action": "CameraMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "12cf0e5e-b1bb-4108-9fe2-26fac45f72d6",
-                    "path": "<Keyboard>/rightArrow",
+                    "id": "2b2dc1af-e812-49a6-a71d-c9ca94d103a3",
+                    "path": "<Touchscreen>/delta/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";mobile",
+                    "action": "CameraMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "ZQSD",
+                    "id": "906cab8d-0fa9-4eb4-abed-ded1b195a899",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraMovement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "b7df2fa8-2b0e-44cc-8686-c2ec548334a9",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": ";keyboard",
-                    "action": "Movement",
+                    "action": "CameraMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "85e5c212-c1c5-45ca-ba36-9ec3ad772a51",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";keyboard",
+                    "action": "CameraMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "579b1ce3-c026-498f-90cd-beb981d63b58",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";keyboard",
+                    "action": "CameraMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "e3a8280b-1121-4a89-8f01-cf253bf5782f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";keyboard",
+                    "action": "CameraMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -85,7 +158,7 @@
                 {
                     "name": "up",
                     "id": "96936df7-56ab-47dd-b29a-2bd26040fdce",
-                    "path": "<Pointer>/delta/up",
+                    "path": "<Touchscreen>/delta/up",
                     "interactions": "",
                     "processors": "",
                     "groups": ";mobile",
@@ -125,6 +198,72 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "Arrow",
+                    "id": "48f8b4c1-c0e3-467c-9a01-382f2c6b1d37",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "2ad92b69-e5f8-4e72-9db9-d460936021e7",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "584fcfb2-f705-483c-8f91-8476154fcd0a",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "ae0c8843-4141-4218-8ba3-7b050e11597d",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "83c9cd00-7886-4f81-91a8-739c91d29e3b",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "80b835e6-414b-4a7e-92f7-ac5c12caa3ab",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";keyboard",
+                    "action": "CancelAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -136,6 +275,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }
