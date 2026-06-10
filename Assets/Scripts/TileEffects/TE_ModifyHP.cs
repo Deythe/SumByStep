@@ -5,10 +5,14 @@ public class TE_ModifyHP : TileEffect
 {
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private int _lifePointModifier;
-    
-    public override void ExecuteEffect(Transform tileResident_)
+
+    public override void ExecuteEffectOnLeave(Transform tileResident_)
     {
-        tileResident_.GetComponent<LifeBehaviour>().UpdateLifePoint(_lifePointModifier);
+    }
+
+    public override void ExecuteEffectOnArrive(Transform tileResident_)
+    {
+        tileResident_.GetComponent<LifeBehaviour>()?.UpdateLifePoint(_lifePointModifier);
     }
 
     public override void CancelEffect(Transform tileResident_)

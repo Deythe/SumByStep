@@ -43,7 +43,10 @@ public class ActionsBehaviour : MonoBehaviour
         
         foreach (var action in _listEquipedActions)
         {
-            action.notifyFinished += ExecuteCurrentActions;
+            if (action)
+            {
+                action.notifyFinished += ExecuteCurrentActions;
+            }
         }
     }
     
@@ -60,7 +63,7 @@ public class ActionsBehaviour : MonoBehaviour
     
     private void ExecuteCurrentActions()
     {
-        if (_currentIndexAction < _listEquipedActions.Count)
+        if (_currentIndexAction < _listEquipedActions.Count && _listEquipedActions[_currentIndexAction])
         {
             _listEquipedActions[_currentIndexAction]?.UpdateCurrentTimeDuration(_listEquipedActions.Count);
             

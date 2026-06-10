@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "IA_MainGame",
     "maps": [
         {
@@ -15,6 +16,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "CameraMovement",
+                    "type": "PassThrough",
+                    "id": "f8a99259-72c2-4e6f-a664-d0e489a5f5ba",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "CancelAction",
                     "type": "Button",
                     "id": "ac68ade5-d1bd-4759-a075-ad43591bedbb",
@@ -24,71 +34,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CameraMovement",
+                    "name": "Touch",
                     "type": "PassThrough",
-                    "id": "f8a99259-72c2-4e6f-a664-d0e489a5f5ba",
-                    "expectedControlType": "Vector2",
+                    "id": "be9c8330-0dd6-4c32-bc28-dbd214a13300",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "Mobile",
-                    "id": "a193e6f6-a902-4521-a690-21cea3d2cbad",
-                    "path": "2DVector(mode=2)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CameraMovement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "2ae52dd1-ab74-4ee5-93ac-2bdcce237713",
-                    "path": "<Touchscreen>/delta/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";mobile",
-                    "action": "CameraMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "21f44b47-e9ea-46e0-bf4b-1e64605a1c50",
-                    "path": "<Touchscreen>/delta/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";mobile",
-                    "action": "CameraMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "244624be-d8a3-478b-8578-66812f01a825",
-                    "path": "<Touchscreen>/delta/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";mobile",
-                    "action": "CameraMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "2b2dc1af-e812-49a6-a71d-c9ca94d103a3",
-                    "path": "<Touchscreen>/delta/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";mobile",
-                    "action": "CameraMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "ZQSD",
                     "id": "906cab8d-0fa9-4eb4-abed-ded1b195a899",
@@ -145,59 +100,26 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Mobile",
-                    "id": "6900b3e2-ce06-4c56-82be-b63eab3e2934",
-                    "path": "2DVector(mode=1)",
+                    "name": "",
+                    "id": "427dacf7-1671-4cea-a45c-30f9344b0cac",
+                    "path": "<Touchscreen>/primaryTouch/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
+                    "groups": ";mobile",
+                    "action": "CameraMovement",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "96936df7-56ab-47dd-b29a-2bd26040fdce",
-                    "path": "<Touchscreen>/delta/up",
+                    "name": "",
+                    "id": "ec087569-4209-4f3e-a587-4c43a3704aaf",
+                    "path": "<Touchscreen>/primaryTouch/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": ";mobile",
                     "action": "Movement",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "a3ec6b46-9c5a-4e98-9c2a-08694e58e774",
-                    "path": "<Touchscreen>/delta/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";mobile",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "bf1f242f-f599-4e1c-a9d0-0e0773ddbaa3",
-                    "path": "<Touchscreen>/delta/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";mobile",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "e1449fc2-3162-4561-aeda-7566674a5823",
-                    "path": "<Touchscreen>/delta/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";mobile",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "Arrow",
@@ -216,7 +138,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -227,7 +149,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -238,7 +160,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -249,7 +171,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -262,6 +184,17 @@
                     "processors": "",
                     "groups": ";keyboard",
                     "action": "CancelAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e14d66e-79a8-490b-b0c2-639dbb48dfcf",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";mobile",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

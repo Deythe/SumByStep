@@ -1,0 +1,12 @@
+.LifeProgressBar {
+    border-top-width: 0;
+    -unity-text-auto-size: none;
+    padding-top: 100px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    align-items: stretch;
+    position: relative;
+    font-size: 70px;
+}

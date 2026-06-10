@@ -1,7 +1,6 @@
 
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [System.Serializable]
 public class DataActionCubeMovements
@@ -37,19 +36,16 @@ public class ActionCubeMovements : CustomAction
     {
         Move(-_directionRequirement);
     }
-    
     public override string SaveAction()
     {
         string json = JsonUtility.ToJson(new DataActionCubeMovements(_directionRequirement));
         return json;
     }
-
     public override void LoadAction(string datas_)
     {
         DataActionCubeMovements loadedData = JsonUtility.FromJson<DataActionCubeMovements>(datas_);
         _directionRequirement = loadedData.savedDirectionRequirement;
     }
-
     public override void GetDatasForAction<T>(T param)
     {
         if (param is Vector2 pivotVector)

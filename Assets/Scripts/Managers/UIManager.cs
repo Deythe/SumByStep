@@ -7,12 +7,13 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public Func<bool> notifyCameraMode;
-    
     public Button cancelButton;
     
     [SerializeField] private UIDocument _gameUIDocument;
+   
     private ProgressBar _lifeProgressBar;
     private Button _switchCameraModeButton;
+    
     private void Awake()
     {
         if (Instance != null)

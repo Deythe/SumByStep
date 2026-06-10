@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/HUDs/MainMenu.uss?fileID=7433441132597879392&amp;guid=ec2b904a6fd3ba445b74dc32c16423e7&amp;type=3#MainMenu"/>
+    <ui:VisualElement name="CustomRoot" picking-mode="Ignore" style="flex-grow: 0; flex-shrink: 0; flex-basis: 100%; align-items: center; justify-content: center;">
+        <ui:Button text="Continue" name="Continue" style="font-size: 75px;"/>
+        <ui:Button text="Load Level" name="LoadLevel" style="font-size: 75px;"/>
+        <ui:Button text="Options" name="Options" style="font-size: 75px;"/>
+    </ui:VisualElement>
+</ui:UXML>

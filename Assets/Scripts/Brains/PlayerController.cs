@@ -7,15 +7,18 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField][Range(0,100)] private float _touchThreshold;
+    
     [SerializeField] private CameraBehaviour _kingCameraBehaviour;
     [SerializeField] private ActionsBehaviour _kingActionsBehaviour;
     [SerializeField] private LifeBehaviour _kingLifeBehaviour;
     
     private IA_MainGame _playerInput;
     private Vector2 _roundDirection;
-    private bool _canStartActions;
-    private bool isOnUI;
-
+    private bool _firstActionRealisable;
+    private bool _canDoAction;
+    private bool _isOnUI;
+    
     private void Awake()
     { 
         _playerInput = new IA_MainGame();
@@ -23,17 +26,19 @@ public class PlayerController : MonoBehaviour
         
        _playerInput.MainGame.Movement.performed += StartAction;
        _playerInput.MainGame.CancelAction.performed += CancelLastActionInput;
-       _playerInput.MainGame.CameraMovement.performed += InputMoveCamera;
+       _playerInput.MainGame.Touch.performed += CheckTouch;
        
        _playerInput.MainGame.CameraMovement.Disable();
     }
 
     private void Start()
     {
-        _canStartActions = true;
+        _firstActionRealisable = true;
         _kingActionsBehaviour.notifyAllActionsAvailable += ResetCanStartActions;
+        
         _kingLifeBehaviour.notifyDeath += Death;
         _kingLifeBehaviour.notifyLifeChanged += UIManager.Instance.UpdateLifePointUI;
+        
         UIManager.Instance.notifyCameraMode += SwitchCameraInputMode;
         UIManager.Instance.cancelButton.clicked += CancelLastAction;
     }
@@ -42,40 +47,50 @@ public class PlayerController : MonoBehaviour
     {
         if (EventSystem.current)
         {
-            isOnUI = EventSystem.current.IsPointerOverGameObject();
+            _isOnUI = EventSystem.current.IsPointerOverGameObject();
         }
 
-        if (_kingCameraBehaviour && _playerInput.MainGame.CameraMovement.IsPressed() && !isOnUI)
+        if (_kingCameraBehaviour && _playerInput.MainGame.CameraMovement.IsPressed() && !_isOnUI)
         {
-            Vector2 pivotVector = _playerInput.MainGame.CameraMovement.ReadValue<Vector2>();
-            Vector2 pivotRoundDirection = new Vector2(
-                Mathf.RoundToInt(pivotVector.x), 
-                Mathf.RoundToInt(pivotVector.y));
-            
-            _kingCameraBehaviour.ManualMove(pivotRoundDirection);
+           InputMoveCameraFree();
         }
     }
 
     private void StartAction(InputAction.CallbackContext context_)
     {
-        if(isOnUI) return;
+        if(_isOnUI || _canDoAction) return;
+
+        Vector2 touchDeltaPosition = context_.ReadValue<Vector2>();
         
+        if(touchDeltaPosition.magnitude < _touchThreshold) return;
+        
+        touchDeltaPosition.Normalize();
         Vector2 pivotRoundDirection = new Vector2(
-            Mathf.RoundToInt(context_.ReadValue<Vector2>().x), 
-            Mathf.RoundToInt(context_.ReadValue<Vector2>().y));
+            Mathf.RoundToInt(touchDeltaPosition.x), 
+            Mathf.RoundToInt(touchDeltaPosition.y));
 
-        if (pivotRoundDirection == Vector2.zero || !_canStartActions) return;
+        if (pivotRoundDirection == Vector2.zero || !_firstActionRealisable) return;
 
-        _canStartActions = false;
+        _firstActionRealisable = false;
         _roundDirection = pivotRoundDirection;
 
         if (_kingActionsBehaviour.IsFirstActionsRealizable())
         {
             ActionsManager.Instance.ExecuteAllActions();
+            _canDoAction=true;
         }
         else
         {
-            _canStartActions = true;
+            _firstActionRealisable = true;
+        }
+    }
+    
+    private void CheckTouch(InputAction.CallbackContext context_)
+    {
+        float isTouchingScreen = context_.ReadValue<float>();
+        if (isTouchingScreen == 0)
+        {
+            _canDoAction = false;
         }
     }
 
@@ -87,11 +102,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void InputMoveCamera(InputAction.CallbackContext context_)
+    private void InputMoveCameraFree()
     {
-        if (_kingCameraBehaviour && !isOnUI)
+        if (_kingCameraBehaviour && !_isOnUI)
         {
-            _kingCameraBehaviour.ManualMove(context_.ReadValue<Vector2>());
+            Vector2 pivotVector = _playerInput.MainGame.CameraMovement.ReadValue<Vector2>();
+            float reference = Mathf.Min(Screen.width, Screen.height);
+            _kingCameraBehaviour.ManualMove(pivotVector/reference);
         }
     }
     
@@ -102,20 +119,20 @@ public class PlayerController : MonoBehaviour
 
     private void CancelLastAction()
     {
-        if (_canStartActions)
+        if (_firstActionRealisable)
         {
             bool succeed = ActionsManager.Instance.CancelAllActions();
             
             if (succeed)
             {
-                _canStartActions = false;
+                _firstActionRealisable = false;
             }
         }
     }
     
     private void ResetCanStartActions()
     {
-        _canStartActions = true;
+        _firstActionRealisable = true;
     }
 
     private bool SwitchCameraInputMode()

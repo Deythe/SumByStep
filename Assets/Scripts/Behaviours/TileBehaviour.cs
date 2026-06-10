@@ -17,25 +17,38 @@ public class TileBehaviour : MonoBehaviour
     {
         _tileResident = newTileTransform;
         
-        CheckNewResident();
-    }
-    
-    private void CheckNewResident()
-    {
-        if (!_tileResident || _used) return;
-
-        if (_tileResident.CompareTag("Player"))
+        if (_used && !_tileResident)
         {
-            LaunchAllEffect();
+            LaunchAllEffectOnLeave();
+            return;
+        }
+        
+        if (_tileResident && _tileResident.CompareTag("Player"))
+        {
+            LaunchAllEffectOnArrive();
             _used = true;
         }
     }
 
-    private void LaunchAllEffect()
+    private void LaunchAllEffectOnArrive()
     {
         foreach (var pivotTileEffect in _listTileEffects)
         {
-            pivotTileEffect.ExecuteEffect(_tileResident);
+            if (pivotTileEffect)
+            {
+                pivotTileEffect.ExecuteEffectOnArrive(_tileResident);
+            }
+        }
+    }
+    
+    private void LaunchAllEffectOnLeave()
+    {
+        foreach (var pivotTileEffect in _listTileEffects)
+        {
+            if (pivotTileEffect)
+            {
+                pivotTileEffect.ExecuteEffectOnLeave(_tileResident);
+            }
         }
     }
 }
